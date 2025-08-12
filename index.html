@@ -14,19 +14,22 @@
 <body>
     <div id="root"></div>
 
-  <script type="text/babel">
+<script type="text/babel">
     const { useState, useEffect, useMemo } = React;
 
-    // More icon components
+    // All icon components
     const MapPin = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>;
     const Search = () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>;
     const User = () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>;
     const Filter = () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.707A1 1 0 013 7V4z" /></svg>;
     const Plus = () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>;
     const Eye = () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>;
+    const Camera = () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" /></svg>;
+    const Bell = () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>;
+    const Upload = () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>;
 
     const SWPPPInspectionHub = () => {
-        // All of Shawn's inspection sites
+        // All of Shawn's inspection sites with enhanced data
         const [inspections, setInspections] = useState([
             {
                 id: 1,
@@ -35,7 +38,13 @@
                 inspector: "Shawn Garland",
                 contractor: "Ameren",
                 inspectionStartDate: "",
-                monthlyAllottedInspections: ""
+                monthlyAllottedInspections: "",
+                lat: 37.9222,
+                lng: -90.5548,
+                nextInspection: "2024-02-15",
+                dayDue: "Monday",
+                documents: [],
+                photos: []
             },
             {
                 id: 2,
@@ -44,7 +53,13 @@
                 inspector: "Shawn Garland",
                 contractor: "Budrovich",
                 inspectionStartDate: "",
-                monthlyAllottedInspections: ""
+                monthlyAllottedInspections: "",
+                lat: 38.2156,
+                lng: -90.4040,
+                nextInspection: "2024-02-15",
+                dayDue: "Monday",
+                documents: [],
+                photos: []
             },
             {
                 id: 3,
@@ -53,7 +68,13 @@
                 inspector: "Shawn Garland",
                 contractor: "ICS",
                 inspectionStartDate: "",
-                monthlyAllottedInspections: ""
+                monthlyAllottedInspections: "",
+                lat: 38.2642,
+                lng: -90.3762,
+                nextInspection: "2024-02-15",
+                dayDue: "Monday",
+                documents: [],
+                photos: []
             },
             {
                 id: 4,
@@ -62,7 +83,13 @@
                 inspector: "Shawn Garland",
                 contractor: "PCX",
                 inspectionStartDate: "",
-                monthlyAllottedInspections: ""
+                monthlyAllottedInspections: "",
+                lat: 38.3737,
+                lng: -90.3734,
+                nextInspection: "2024-02-15",
+                dayDue: "Monday",
+                documents: [],
+                photos: []
             },
             {
                 id: 5,
@@ -71,7 +98,13 @@
                 inspector: "Shawn Garland",
                 contractor: "7 brew",
                 inspectionStartDate: "",
-                monthlyAllottedInspections: ""
+                monthlyAllottedInspections: "",
+                lat: 38.4245,
+                lng: -90.3773,
+                nextInspection: "2024-02-28",
+                dayDue: "TBD",
+                documents: [],
+                photos: []
             },
             {
                 id: 6,
@@ -80,7 +113,13 @@
                 inspector: "Shawn Garland",
                 contractor: "Budrovich",
                 inspectionStartDate: "",
-                monthlyAllottedInspections: ""
+                monthlyAllottedInspections: "",
+                lat: 38.5156,
+                lng: -90.3645,
+                nextInspection: "2024-02-17",
+                dayDue: "Wednesday",
+                documents: [],
+                photos: []
             },
             {
                 id: 7,
@@ -89,7 +128,13 @@
                 inspector: "Shawn Garland",
                 contractor: "Budrovich",
                 inspectionStartDate: "",
-                monthlyAllottedInspections: ""
+                monthlyAllottedInspections: "",
+                lat: 38.6356,
+                lng: -90.2944,
+                nextInspection: "2024-02-17",
+                dayDue: "Wednesday",
+                documents: [],
+                photos: []
             }
         ]);
 
@@ -99,6 +144,9 @@
         const [searchTerm, setSearchTerm] = useState('');
         const [selectedInspection, setSelectedInspection] = useState(null);
         const [showAddForm, setShowAddForm] = useState(false);
+        const [showMobileApp, setShowMobileApp] = useState(false);
+        const [showFormDemo, setShowFormDemo] = useState(false);
+        const [selectedSite, setSelectedSite] = useState(null);
 
         // Get unique contractors and inspectors
         const contractors = useMemo(() => {
@@ -165,6 +213,341 @@
             );
         };
 
+        // Calendar View Component
+        const CalendarView = () => {
+            const today = new Date();
+            const currentMonth = today.getMonth();
+            const currentYear = today.getFullYear();
+            
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+            
+            return (
+                <div className="bg-white rounded-lg shadow-sm border p-6">
+                    <div className="flex justify-between items-center mb-6">
+                        <h2 className="text-2xl font-bold text-gray-900">
+                            📅 {monthNames[currentMonth]} {currentYear}
+                        </h2>
+                        <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-2 bg-yellow-50 px-3 py-2 rounded-lg border border-yellow-200">
+                                <Bell className="text-yellow-600" />
+                                <span className="text-sm text-yellow-800">Auto-Reminders: ON</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-7 gap-1 mb-4">
+                        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+                            <div key={day} className="p-2 text-center text-sm font-medium text-gray-500 bg-gray-50 rounded">
+                                {day}
+                            </div>
+                        ))}
+                    </div>
+                    
+                    <div className="grid grid-cols-7 gap-1 mb-6">
+                        {Array.from({ length: 35 }, (_, i) => {
+                            const day = i + 1;
+                            const hasInspection = inspections.some(inspection => 
+                                new Date(inspection.nextInspection).getDate() === day && 
+                                new Date(inspection.nextInspection).getMonth() === currentMonth
+                            );
+                            
+                            return (
+                                <div
+                                    key={i}
+                                    className={`min-h-[80px] p-2 border rounded cursor-pointer transition-colors bg-white hover:bg-gray-50 ${
+                                        day === today.getDate() ? 'ring-2 ring-blue-500' : ''
+                                    }`}
+                                >
+                                    <div className={`text-sm font-medium mb-1 ${
+                                        day === today.getDate() ? 'text-blue-600' : 'text-gray-900'
+                                    }`}>
+                                        {day}
+                                    </div>
+                                    {hasInspection && (
+                                        <div className="text-xs p-1 bg-blue-100 text-blue-800 rounded truncate">
+                                            SWPPP Inspection
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
+                    
+                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <h3 className="font-semibold text-blue-900 mb-3 flex items-center gap-2">
+                            <Bell className="text-blue-600" />
+                            Auto-Reminder Settings (Preview)
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                            <div className="bg-white p-3 rounded border">
+                                <div className="font-medium text-gray-900">📧 Email Reminders</div>
+                                <div className="text-gray-600 mt-1">
+                                    • 3 days before inspection<br/>
+                                    • Day of inspection<br/>
+                                    • Overdue notifications
+                                </div>
+                            </div>
+                            <div className="bg-white p-3 rounded border">
+                                <div className="font-medium text-gray-900">📱 SMS Alerts</div>
+                                <div className="text-gray-600 mt-1">
+                                    • Weather-triggered inspections<br/>
+                                    • Contract expiration warnings<br/>
+                                    • Violation follow-ups
+                                </div>
+                            </div>
+                            <div className="bg-white p-3 rounded border">
+                                <div className="font-medium text-gray-900">🌧️ Weather Triggers</div>
+                                <div className="text-gray-600 mt-1">
+                                    • Rain event notifications<br/>
+                                    • 24-hour post-storm alerts<br/>
+                                    • Forecast-based scheduling
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // Document Hub Component
+        const DocumentHub = () => {
+            return (
+                <div className="space-y-6">
+                    {/* Form Templates */}
+                    <div className="bg-white rounded-lg shadow-sm border p-6">
+                        <div className="flex justify-between items-center mb-4">
+                            <h3 className="text-lg font-semibold">📋 Digital Form Templates</h3>
+                            <button className="flex items-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                                <Upload />
+                                Upload Form Template
+                            </button>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="border border-purple-200 rounded-lg p-4 bg-purple-50">
+                                <div className="flex justify-between items-start mb-3">
+                                    <div>
+                                        <h4 className="font-medium text-purple-900">SWPPP Standard Form</h4>
+                                        <p className="text-sm text-purple-700">6 fields • Auto-PDF • Email ready</p>
+                                    </div>
+                                    <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">ACTIVE</span>
+                                </div>
+                                
+                                <div className="space-y-1 text-xs text-purple-700 mb-4">
+                                    <div>• Inspector Name</div>
+                                    <div>• Weather Conditions</div>
+                                    <div>• BMP Adequacy Check</div>
+                                    <div>• Violations Y/N</div>
+                                    <div>• Recommendations</div>
+                                </div>
+                                
+                                <div className="flex gap-2">
+                                    <button
+                                        onClick={() => setShowFormDemo(true)}
+                                        className="flex-1 bg-purple-600 text-white text-xs py-2 rounded hover:bg-purple-700"
+                                    >
+                                        📱 Test Mobile Form
+                                    </button>
+                                    <button className="flex-1 bg-gray-100 text-gray-700 text-xs py-2 rounded hover:bg-gray-200">
+                                        ✏️ Edit
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-300">
+                                <div className="text-center py-8 text-gray-400">
+                                    <Upload className="w-12 h-12 mx-auto mb-2" />
+                                    <p className="text-sm">Upload your PDF form template</p>
+                                    <p className="text-xs mt-1">Automatically converts to mobile-friendly format</p>
+                                </div>
+                                
+                                <button className="w-full bg-blue-600 text-white text-xs py-2 rounded hover:bg-blue-700 mt-4">
+                                    + Add Form Template
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Site Document Management */}
+                    <div className="bg-white rounded-lg shadow-sm border p-4">
+                        <h2 className="text-lg font-semibold mb-4">📁 Site Document Management</h2>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {inspections.map(site => (
+                                <div
+                                    key={site.id}
+                                    onClick={() => setSelectedSite(site)}
+                                    className={`p-4 border rounded-lg cursor-pointer transition-colors ${
+                                        selectedSite?.id === site.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'
+                                    }`}
+                                >
+                                    <h3 className="font-semibold text-gray-900 truncate">{site.siteName}</h3>
+                                    <p className="text-sm text-gray-600 mb-3">{site.contractor}</p>
+                                    
+                                    <div className="grid grid-cols-2 gap-2 text-xs">
+                                        <div className="text-center p-2 bg-green-100 rounded">
+                                            <div className="font-bold text-green-800">{site.photos?.length || 0}</div>
+                                            <div className="text-green-600">Photos</div>
+                                        </div>
+                                        <div className="text-center p-2 bg-purple-100 rounded">
+                                            <div className="font-bold text-purple-800">{site.documents?.length || 0}</div>
+                                            <div className="text-purple-600">Documents</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        
+                        {selectedSite && (
+                            <div className="mt-6 p-4 border-t">
+                                <h3 className="font-semibold mb-3">📄 {selectedSite.siteName} - Documents & Photos</h3>
+                                <div className="flex gap-3">
+                                    <button className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                                        <Camera />
+                                        Add Photos
+                                    </button>
+                                    <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                        <Upload />
+                                        Upload Document
+                                    </button>
+                                </div>
+                                <p className="text-sm text-gray-600 mt-2">
+                                    Upload inspection photos and documents for complete site records
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        // Mobile App Demo
+        const MobileAppDemo = () => (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div className="bg-gray-900 rounded-lg overflow-hidden w-80 h-[600px] border-8 border-gray-800">
+                    <div className="h-full bg-white relative">
+                        <div className="bg-gray-900 text-white text-xs px-4 py-1 flex justify-between items-center">
+                            <span>📶 Verizon</span>
+                            <span>9:41 AM</span>
+                            <span>🔋 85%</span>
+                        </div>
+                        
+                        <div className="bg-blue-600 text-white p-4">
+                            <div className="flex justify-between items-center">
+                                <h2 className="text-lg font-bold">SWPPP Field App</h2>
+                                <button onClick={() => setShowMobileApp(false)} className="text-white">×</button>
+                            </div>
+                            <p className="text-blue-100 text-sm">Shawn Garland - Inspector</p>
+                        </div>
+                        
+                        <div className="p-4">
+                            <h3 className="font-semibold mb-3">📅 Today's Inspections</h3>
+                            <div className="space-y-3">
+                                {inspections.slice(0, 2).map(site => (
+                                    <div key={site.id} className="border border-blue-200 rounded-lg p-3 bg-blue-50">
+                                        <div className="font-medium">{site.siteName}</div>
+                                        <div className="text-sm text-gray-600">{site.contractor}</div>
+                                        <div className="flex gap-2 mt-2">
+                                            <button className="flex-1 bg-blue-600 text-white text-xs py-2 rounded">
+                                                🧭 Navigate
+                                            </button>
+                                            <button className="flex-1 bg-green-600 text-white text-xs py-2 rounded">
+                                                📋 Start Form
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        
+                        <div className="p-4 border-t">
+                            <h3 className="font-semibold mb-3">⚡ Quick Actions</h3>
+                            <div className="grid grid-cols-2 gap-3">
+                                <button className="bg-green-100 text-green-800 p-3 rounded-lg text-center">
+                                    <Camera className="w-6 h-6 mx-auto mb-1" />
+                                    <div className="text-xs">Take Photos</div>
+                                </button>
+                                <button className="bg-yellow-100 text-yellow-800 p-3 rounded-lg text-center">
+                                    <div className="text-lg mb-1">🌤️</div>
+                                    <div className="text-xs">Weather</div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div className="absolute bottom-0 left-0 right-0 bg-gray-100 border-t flex">
+                            <button className="flex-1 py-3 text-center text-xs bg-blue-600 text-white">
+                                <div className="text-lg">🏠</div>
+                                <div>Home</div>
+                            </button>
+                            <button className="flex-1 py-3 text-center text-xs text-gray-600">
+                                <div className="text-lg">📅</div>
+                                <div>Schedule</div>
+                            </button>
+                            <button className="flex-1 py-3 text-center text-xs text-gray-600">
+                                <div className="text-lg">📸</div>
+                                <div>Camera</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+
+        // Mobile Form Demo
+        const MobileFormDemo = () => (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div className="bg-gray-900 rounded-lg overflow-hidden w-80 h-[600px] border-8 border-gray-800">
+                    <div className="h-full bg-white relative">
+                        <div className="bg-gray-900 text-white text-xs px-4 py-1 flex justify-between items-center">
+                            <span>📶 Verizon</span>
+                            <span>9:41 AM</span>
+                            <span>🔋 85%</span>
+                        </div>
+                        
+                        <div className="bg-purple-600 text-white p-4">
+                            <div className="flex justify-between items-center">
+                                <h2 className="text-lg font-bold">📋 SWPPP Form</h2>
+                                <button onClick={() => setShowFormDemo(false)} className="text-white">×</button>
+                            </div>
+                            <p className="text-purple-100 text-sm">St. Francios Substation</p>
+                            <div className="mt-2 bg-purple-700 rounded-full h-2">
+                                <div className="bg-white h-2 rounded-full w-1/3" />
+                            </div>
+                        </div>
+                        
+                        <div className="p-4">
+                            <div className="mb-4">
+                                <span className="text-xs text-gray-500">Question 2 of 6</span>
+                            </div>
+                            
+                            <label className="block text-sm font-medium text-gray-900 mb-3">
+                                Weather Conditions <span className="text-red-500">*</span>
+                            </label>
+                            
+                            <input
+                                type="text"
+                                placeholder="e.g., Clear, 65°F"
+                                className="w-full p-3 border border-gray-300 rounded-lg text-lg"
+                                defaultValue="Clear, 45°F"
+                            />
+                        </div>
+                        
+                        <div className="absolute bottom-0 left-0 right-0 bg-white border-t p-4">
+                            <div className="flex gap-3">
+                                <button className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-medium">
+                                    ← Back
+                                </button>
+                                <button className="flex-1 bg-purple-600 text-white py-3 rounded-lg font-medium">
+                                    Next →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+
         return (
             <div className="min-h-screen bg-gray-50">
                 {/* Header */}
@@ -217,6 +600,12 @@
                                 }`}
                             >
                                 📁 Document Hub
+                            </button>
+                            <button 
+                                onClick={() => setShowMobileApp(true)}
+                                className="px-4 py-2 rounded-lg font-medium text-green-600 hover:text-green-900 hover:bg-green-50 border border-green-200"
+                            >
+                                📱 Field App
                             </button>
                         </div>
                     </div>
@@ -332,13 +721,21 @@
                                                         />
                                                     </td>
                                                     <td className="px-4 py-4 whitespace-nowrap text-sm font-medium">
-                                                        <button
-                                                            onClick={() => setSelectedInspection(inspection)}
-                                                            className="text-blue-600 hover:text-blue-900"
-                                                            title="View Details"
-                                                        >
-                                                            <Eye />
-                                                        </button>
+                                                        <div className="flex gap-2">
+                                                            <button
+                                                                onClick={() => setSelectedInspection(inspection)}
+                                                                className="text-blue-600 hover:text-blue-900"
+                                                                title="View Details"
+                                                            >
+                                                                <Eye />
+                                                            </button>
+                                                            <button
+                                                                className="text-green-600 hover:text-green-900"
+                                                                title="View on Map"
+                                                            >
+                                                                <MapPin />
+                                                            </button>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             ))}
@@ -349,22 +746,11 @@
                         </>
                     )}
 
-                    {activeTab === 'calendar' && (
-                        <div className="bg-white rounded-lg shadow-sm border p-6">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-4">📅 Calendar View</h2>
-                            <p className="text-gray-600">Calendar functionality coming in the next update!</p>
-                        </div>
-                    )}
-
-                    {activeTab === 'documents' && (
-                        <div className="bg-white rounded-lg shadow-sm border p-6">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-4">📁 Document Hub</h2>
-                            <p className="text-gray-600">Document management and photo uploads coming in the next update!</p>
-                        </div>
-                    )}
+                    {activeTab === 'calendar' && <CalendarView />}
+                    {activeTab === 'documents' && <DocumentHub />}
                 </div>
 
-                {/* Inspection Details Modal */}
+                {/* Modals */}
                 {selectedInspection && (
                     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                         <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
@@ -401,6 +787,9 @@
                         </div>
                     </div>
                 )}
+
+                {showMobileApp && <MobileAppDemo />}
+                {showFormDemo && <MobileFormDemo />}
             </div>
         );
     };
